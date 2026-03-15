@@ -11,12 +11,14 @@ app.get("/helath-checkup",(req,res)=>{
         res.status(400).json({
             msg : "Something up with your inputs"
         })
+        return;
     }
 
     if(kidney != 1 && kidney !=2) {
         res.status(400).json({
             msg : "Something up with your inputs"
         })
+        return;
     }
 
     res.json({

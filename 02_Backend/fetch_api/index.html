@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fetch API - Demo</title>
 </head>
+
 <body>
     <button onclick="getAnimalData()">Get Animal Data</button>
 </body>
+
 </html>
 
 <script>
     function getAnimalData() {
-        const response = fetch("https://fakerapi.it/api/v2/persons");
-        console.log(response)
+        const response = fetch("https://fakerapi.it/api/v2/persons").then((response) => {
+            response.json().then((finalData) => {
+                console.log(finalData)
+            })
+        })
     }
 </script>

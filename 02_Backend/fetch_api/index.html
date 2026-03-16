@@ -8,16 +8,41 @@
 </head>
 
 <body>
-    <button onclick="getAnimalData()">Get Animal Data</button>
+    <button onclick="getAnimalData()">Get user Data</button>
+    <table
+        style="width: 100%; border-collapse: collapse; font-family: sans-serif; margin: 25px 0; font-size: 0.9em; box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);">
+        <thead>
+            <tr style="background-color: #009879; color: #ffffff; text-align: left; font-weight: bold;">
+                <th style="padding: 12px 15px;">S.no</th>
+                <th style="padding: 12px 15px;">Name</th>
+                <th style="padding: 12px 15px;">Email</th>
+                <th style="padding: 12px 15px;">Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 </body>
 
 </html>
 
 <script>
     function getAnimalData() {
-        const response = fetch("https://fakerapi.it/api/v2/persons").then((response) => {
+        const response = fetch("https://fakerapi.it/api/v1/persons").then((response) => {
             response.json().then((finalData) => {
                 console.log(finalData)
+                const table = document.getElementsByTagName("tbody")[0]
+                const htmlRows = finalData.data.map((user, index) => {
+                   return `
+                    <tr style="border-bottom: 1px solid #dddddd;">
+                        <td style="padding: 12px 15px;">${user.id}</td>
+                        <td style="padding: 12px 15px;">${user.firstname + " " + user.lastname}</td>
+                        <td style="padding: 12px 15px;">${user.email}</td>
+                        <td style="padding: 12px 15px;">${user.phone}</td>
+                    </tr>
+                    `;
+                }).join("")
+                table.innerHTML = htmlRows
             })
         })
     }

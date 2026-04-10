@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do App</title>
+</head>
+
+<body>
+    <!-- The input fields -->
+    <div>
+        <input type="text" id="title" placeholder="Enter the title" value="">
+        <input type="text" id="desc" placeholder="Enter the description" value="">
+        <button id="btn">Submit</button>
+    </div>
+    <div id="area">
+
+    </div>
+</body>
+
+</html>
+<script>
+    const submit = document.getElementById('btn')
+    const title = document.getElementById('title')
+    const description = document.getElementById('desc')
+    const area = document.getElementById('area')
+
+    submit.onclick = () => {
+        console.log("i am here")
+        const content = `<h3>${title.value}</h3><p>${description.value}</p>`
+        console.log(content)
+        area.innerHTML += content
+        console.log(content)
+    }
+</script>

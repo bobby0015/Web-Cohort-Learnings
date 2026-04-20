@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM manipulation</title>
+</head>
+
+<body>
+    <!-- Create a counter button using the state, component and re-rendering -->
+
+    <div id="button"></div>
+</body>
+
+</html>
+
+<script>
+    // Define the state object
+    let state = {
+        count: 0
+    }
+
+    // Created a function which actually increased the value by 1 on clicking 
+    function onButtonPress() {
+        state.count++;
+        buttonComponentReRender()
+    }
+
+    // Very important thing becuase this is the only thing which will update your component dynamically
+    function buttonComponentReRender() {
+        document.getElementById('button').innerHTML = ""
+        const component = buttonComponent(state.count)
+        document.getElementById('button').appendChild(component)
+    }
+
+    // This is your visualized coponent which you can see and click to perform the action
+    function buttonComponent(count) {
+        const button = document.createElement('button');
+        button.innerHTML = `Count ${count}`;
+        button.setAttribute('onclick', `onButtonPress()`)
+        return button
+    }
+
+    buttonComponentReRender()
+</script>

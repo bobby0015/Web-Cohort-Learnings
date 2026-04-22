@@ -13,7 +13,7 @@ const todoSchema = mongoose.Schema({
     },
     completed: {
         type: boolean,
-        require: true
+        default : false
     },
 })
 

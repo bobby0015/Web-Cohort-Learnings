@@ -1,5 +1,6 @@
 const express = require('express');
 const { createTodo, updateTodo } = require('./types');
+const { todo } = require('./db');
 const app = express()
 
 //Global middlewares
@@ -15,7 +16,15 @@ app.post("/todo", function (req, res) {
         })
     }
 
-    // Put the data in mongoDB
+    const newTodo = await todo.create({
+        title : createPayload.title,
+        description : createPayload.description
+    })
+
+    return res.status(200).json({
+        msg : 'todo created',
+        newTodo
+    })
 })
 
 app.get("/todos", function (req, res) {

@@ -4,8 +4,16 @@ const app = express()
 //Global middlewares
 app.use(express.json())
 
-app.get('/', function(req,res){
-    res.send('Hi, I am server');
+app.post("/todo", function(req,res){
+
+})
+
+app.get("/todos", function(req,res){
+    
+})
+
+app.put("/completed", function(req,res){
+    
 })
 
 const PORT = 3000

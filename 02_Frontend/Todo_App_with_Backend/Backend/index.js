@@ -6,7 +6,7 @@ const app = express()
 //Global middlewares
 app.use(express.json())
 
-app.post("/todo", function (req, res) {
+app.post("/todo",async function (req, res) {
     const createPayload = req.body;
     const parsePayload = createTodo.safeParse(createPayload)
 
@@ -27,8 +27,13 @@ app.post("/todo", function (req, res) {
     })
 })
 
-app.get("/todos", function (req, res) {
+app.get("/todos",async function (req, res) {
+    const allTodo = await todo.find()
 
+    return res.status(200).json({
+        msg : 'all todos',
+        allTodo
+    })
 })
 
 app.put("/completed", function (req, res) {

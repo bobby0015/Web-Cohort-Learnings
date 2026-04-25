@@ -1,9 +1,11 @@
+import React from "react"
+
 const App = () => {
   return (
-    <div>
+    <React.Fragment>
       <Header title="My name is Divyam" />
       <Header title="My name is Chauhan" />
-    </div>
+    </React.Fragment>
   )
 }
 

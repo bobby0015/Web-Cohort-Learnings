@@ -1,28 +1,48 @@
-import { memo, useState } from "react"
+import { useState } from "react"
 
 const App = () => {
-  const [title, setTitle] = useState('Divyam Chauhan')
+  const [count, setCount] = useState(4);
+  const [todo, setTodo] = useState([
+    {
+      title: 'My first Todo',
+      descriptiom: 'This is the descritption of my first Todo',
+    },
+    {
+      title: 'My Second Todo',
+      descriptiom: 'This is the descritption of my second Todo',
+    },
+    {
+      title: 'My third Todo',
+      descriptiom: 'This is the descritption of my third Todo',
+    },
+  ])
 
-  const updateTitle = () => {
-    setTitle(Math.random)
+  const addTodo = () => {
+    setCount(count + 1)
+    setTodo([...todo, {
+      title: `My ${count} Todo`,
+      descriptiom: `This is the descritption of my ${count} Todo`
+    }])
   }
 
   return (
     <>
-      <button onClick={updateTitle}>Click me to update title</button>
-      <Header title={`My name is ${title}`} />
-      <Header title='My name is Nishant Chauhan' />
-      <Header title='My name is Nishant Chauhan' />
-      <Header title='My name is Nishant Chauhan' />
-      <Header title='My name is Nishant Chauhan' />
-      <Header title='My name is Nishant Chauhan' />
+      <button onClick={addTodo}>Create a new todo</button>
+      {
+        todo.map((todo, index) => {
+          console.log(index)
+          return <Todo title={todo.title} description={todo.descriptiom} key={index} />
+        })
+      }
     </>
   )
 }
 
-const Header = memo(({title}) => {
-  console.log("Rendered:", title);
-  return <div>{title}</div>
-})
+const Todo = ({ title, description }) => {
+  return <div>
+    <h3>{title}</h3>
+    <p>{description}</p>
+  </div>
+}
 
 export default App

@@ -1,20 +1,27 @@
-import React, { useState } from "react"
+import { useState } from "react"
 
 const App = () => {
 
-  const [value,setValue] = useState('Divyam')
+  return (
+    <>
+      <ButtonWithHeader />
+      <Header title={'My name is Nishant Chauhan'} />
+    </>
+  )
+}
 
-  const randomValues = () => {
-    setValue(Math.random)
+const ButtonWithHeader = () => {
+  const [title, setTitle] = useState('Divyam Chauhan')
+
+  const updateTitle = () => {
+    setTitle(Math.random)
   }
 
-  return (
-    <React.Fragment>
-      <button onClick={randomValues}>Click me to change the name</button>
-      <Header title={`My name is ${value}`} />
-      <Header title="My name is Chauhan" />
-    </React.Fragment>
-  )
+  return <>
+    <button onClick={updateTitle}>Click me to update title</button>
+    <Header title={`My name is ${title}`} />
+  </>
+
 }
 
 const Header = (props) => {

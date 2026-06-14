@@ -1,9 +1,15 @@
-function print(fn: () => void) {
-    setTimeout(fn, 1000)
+// Define the interface for user
+interface User {
+    name : string,
+    age : number,
 }
 
-function sum(a: number, b: number) {
-    console.log(`The sum of ${a} and ${b} is ${a+b}`)
+function isLegal(user: User): string {
+    if(user.age <= 18) return `Sorry! ${user.name} you are not an adult.`
+    return `Welcome! ${user.name} to our party.`
 }
 
-print(() => sum(2,2))
+console.log(isLegal({
+    name : 'Divyam Chauhan',
+    age : 22
+}))

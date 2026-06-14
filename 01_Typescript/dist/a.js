@@ -1,10 +1,13 @@
 "use strict";
+// Define the interface for user
 Object.defineProperty(exports, "__esModule", { value: true });
-function print(fn) {
-    setTimeout(fn, 1000);
+function isLegal(user) {
+    if (user.age <= 18)
+        return `Sorry! ${user.name} you are not an adult.`;
+    return `Welcome! ${user.name} to our party.`;
 }
-function sum(a, b) {
-    console.log(`The sum of ${a} and ${b} is ${a + b}`);
-}
-print(() => sum(2, 2));
+console.log(isLegal({
+    name: 'Divyam Chauhan',
+    age: 22
+}));
 //# sourceMappingURL=a.js.map
